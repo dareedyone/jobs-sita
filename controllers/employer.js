@@ -31,9 +31,13 @@ const createOrEditProfile = async (req, res) => {
 
 		const employer = await newEmployer.save();
 
-		const user = await User.findByIdAndUpdate(userId, {
-			userType: "employer",
-		});
+		const user = await User.findByIdAndUpdate(
+			userId,
+			{
+				userType: "employer",
+			},
+			{ new: true }
+		);
 		const token = user.jwtToken();
 		const populatedEmployer = await Employer.populate(employer, "user");
 
