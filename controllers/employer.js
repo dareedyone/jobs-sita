@@ -58,7 +58,7 @@ const getProfile = async (req, res) => {
 		const employer = await Employer.find({ user: userId }).populate("user");
 
 		return res.json({
-			message: "Profile filled successfully",
+			message: "Profile fetched successfully",
 			value: true,
 			employer,
 		});
